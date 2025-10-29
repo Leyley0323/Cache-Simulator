@@ -2,6 +2,7 @@
 	#include <stdbool.h>
     #include <string.h>
     #include <stdlib.h>
+    #include <stdint.h>
 
 	//Configuration variables
 	int NUM_SETS;
@@ -26,11 +27,11 @@
     int reads = 0;
 
 	// Forward declarations
-	void Update_lru(long long int add);
-	void Update_fifo(long long int add);
+	void Update_lru(uint64_t add);
+	void Update_fifo(uint64_t add);
 
 	// Function to simulate cache access
-	void Simulate_access(char op, long long int add) {
+	void Simulate_access(char op, uint64_t add) {
         int set = (add / BLOCK_SIZE) % NUM_SETS;
         long long int tag = add / BLOCK_SIZE;
         bool hit = false;
@@ -132,7 +133,7 @@
 	}
 
 	//LRU policy updates
-	void Update_lru (long long int add) {
+	void Update_lru (uint64_t add) {
         int set = (add / BLOCK_SIZE) % NUM_SETS;
         long long int tag = add / BLOCK_SIZE;
         int index = -1;
@@ -151,7 +152,7 @@
 	}
 
     //FIFO policy updates
-	void Update_fifo (long long int add) {
+	void Update_fifo (uint64_t add) {
         int set = (add / BLOCK_SIZE) % NUM_SETS;
         long long int tag = add / BLOCK_SIZE;
         int index = -1;
@@ -201,7 +202,7 @@
         }
 
         char op;
-        long long int add ;
+        uint64_t add;
         FILE * file = fopen (traceFile, "r");
 
         // Initialize cache
