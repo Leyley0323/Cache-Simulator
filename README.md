@@ -1,6 +1,6 @@
-Computer Architecture Project
+# Computer Architecture Project:
 
-# Cache Simulator
+## Cache Simulator
 
 A flexible cache simulator that models different cache configurations, replacement policies, and write policies for computer architecture analysis.
 
